@@ -1,0 +1,64 @@
+body {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6EUTrn7QXlY8OCZ3XwMEttBopSRzYmDzeJt07l_-u_TITLfoSRngPjdSA&s=10');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Mengatur tinggi body untuk mengisi viewport */
+    margin: 0; /* Menghilangkan margin default */
+    position: relative; /* Agar posisi elemen anak dapat diatur relatif */
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #ff4081; /* Warna latar belakang */
+    color: white; /* Warna teks */
+    border: none; /* Menghilangkan border default */
+    border-radius: 10px; /* Sudut melengkung */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Bayangan */
+    transition: background-color 0.3s, transform 0.3s; /* Efek transisi */
+    margin-bottom: 20px; /* Jarak bawah dari tombol */
+}
+
+button:hover {
+    background-color: #e91e63; /* Warna latar belakang saat hover */
+    transform: scale(1.05); /* Memperbesar sedikit saat hover */
+}
+
+#spotifyContainer {
+    text-align: center; /* Mengatur teks agar berada di tengah */
+    margin-bottom: 20px; /* Jarak bawah untuk kontainer Spotify */
+}
+
+#kataCinta {
+    text-align: center; /* Mengatur teks agar berada di tengah */
+    font-size: 24px; /* Ukuran font lebih besar */
+    margin-top: 20px; /* Jarak atas */
+    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang transparan */
+    padding: 20px; /* Jarak dalam */
+    border-radius: 10px; /* Sudut melengkung */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Bayangan untuk kedalaman */
+    color: white; /* Warna teks */
+}
+
+#watermark {
+    position: absolute; /* Menggunakan posisi absolut */
+    bottom: 10px; /* Jarak dari bawah */
+    right: 20px; /* Jarak dari kanan */
+    font-size: 20px; /* Ukuran font sedikit lebih besar */
+    color: rgba(255, 255, 255, 0.9); /* Warna putih dengan transparansi lebih rendah */
+    font-style: italic; /* Mengubah gaya font menjadi italic */
+    z-index: 10; /* Menempatkan watermark di atas elemen lainnya */
+    pointer-events: none; /* Memastikan watermark tidak mengganggu interaksi pengguna */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Efek bayangan untuk kontras */
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kata Cinta</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link ke CSS -->
+    <style>
+        body {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6EUTrn7QXlY8OCZ3XwMEttBopSRzYmDzeJt07l_-u_TITLfoSRngPjdSA&s=10');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Mengatur tinggi body untuk mengisi viewport */
+            margin: 0; /* Menghilangkan margin default */
+            position: relative; /* Agar posisi elemen anak dapat diatur relatif */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #ff4081; /* Warna latar belakang */
+            color: white; /* Warna teks */
+            border: none; /* Menghilangkan border default */
+            border-radius: 10px; /* Sudut melengkung */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Bayangan */
+            transition: background-color 0.3s, transform 0.3s; /* Efek transisi */
+            margin-bottom: 20px; /* Jarak bawah dari tombol */
+        }
+
+        button:hover {
+            background-color: #e91e63; /* Warna latar belakang saat hover */
+            transform: scale(1.05); /* Memperbesar sedikit saat hover */
+        }
+
+        #spotifyContainer {
+            text-align: center; /* Mengatur teks agar berada di tengah */
+            margin-bottom: 20px; /* Jarak bawah untuk kontainer Spotify */
+        }
+
+        #kataCinta {
+            text-align: center; /* Mengatur teks agar berada di tengah */
+            font-size: 24px; /* Ukuran font lebih besar */
+            margin-top: 20px; /* Jarak atas */
+            background-color: rgba(0, 0, 0, 0.5); /* Latar belakang transparan */
+            padding: 20px; /* Jarak dalam */
+            border-radius: 10px; /* Sudut melengkung */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Bayangan untuk kedalaman */
+            color: white; /* Warna teks */
+        }
+
+        #watermark {
+            position: absolute; /* Menggunakan posisi absolut */
+            bottom: 10px; /* Jarak dari bawah */
+            right: 20px; /* Jarak dari kanan */
+            font-size: 20px; /* Ukuran font sedikit lebih besar */
+            color: rgba(255, 255, 255, 0.9); /* Warna putih dengan transparansi lebih rendah */
+            font-style: italic; /* Mengubah gaya font menjadi italic */
+            z-index: 10; /* Menempatkan watermark di atas elemen lainnya */
+            pointer-events: none; /* Memastikan watermark tidak mengganggu interaksi pengguna */
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Efek bayangan untuk kontras */
+        }
+    </style>
+</head>
+<body>
+    <div id="spotifyContainer">
+        <iframe src="https://open.spotify.com/embed/track/6lanRgr6wXibZr8KgzXxBl?utm_source=generator" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
+
+    <button id="startButton">Mulai</button>
+
+    <div id="kataCinta" class="hidden">
+        <p>Ayy, aku nungguin kamu,<br>
+        Walau seribu tahun, gapapa,<br>
+        Setiap detik, setiap jam,<br>
+        Rindu ini makin nambah, cuy.</p>
+
+        <p>Jarak ini nggak bikin surut,<br>
+        Cintaku ini tetap hangat,<br>
+        Di hati ada kamu terus,<br>
+        Biar jauh, tetep terasa dekat.</p>
+
+        <p>Nama kamu di bintang ku ukir,<br>
+        Supaya tahu, aku takkan pergi,<br>
+        Satu hati, satu cinta,<br>
+        Nunggu kamu selamanya, ya!</p>
+        
+        <p style="text-align: center; font-size: 20px; color: white;">Jangan lupa putar lagunya yaa ayy pas baca 🤍🤍</p>
+    </div>
+
+    <div id="watermark">For you ayka</div>
+
+    <audio id="backgroundMusic" loop>
+        <source src="URL_LAGU_MU_DISINI" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const startButton = document.getElementById('startButton');
+        const kataCinta = document.getElementById('kataCinta');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+
+        startButton.addEventListener('click', () => {
+            startButton.style.display = 'none'; // Menghilangkan tombol setelah diklik
+            kataCinta.classList.remove('hidden'); // Menampilkan puisi
+            backgroundMusic.play(); // Memulai musik
+        });
+    </script>
+</body>
+</html>
