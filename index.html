@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Selamat Ulang Tahun!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffe6f0;
+      font-family: 'Press Start 2P', cursive;
+      text-align: center;
+      color: #ad1457;
+      overflow-x: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #ffffffcc;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(173, 20, 87, 0.2);
+      padding: 40px 30px;
+      max-width: 320px;
+      width: 90vw;
+      box-sizing: border-box;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+      box-shadow: 0 12px 30px rgba(173, 20, 87, 0.35);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.7rem;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 0.8rem;
+      margin-bottom: 2rem;
+      color: #880e4f;
+      line-height: 1.4;
+    }
+
+    button {
+      padding: 14px 28px;
+      font-size: 0.7rem;
+      background-color: #d81b60;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      font-weight: 700;
+      box-shadow: 0 5px 12px rgba(216, 27, 96, 0.5);
+      user-select: none;
+    }
+
+    button:hover {
+      background-color: #ad1457;
+      box-shadow: 0 8px 20px rgba(173, 20, 87, 0.7);
+    }
+
+    button:active {
+      transform: scale(0.95);
+      box-shadow: 0 4px 10px rgba(173, 20, 87, 0.5);
+    }
+
+    #secondPage {
+      display: none;
+      padding: 40px 20px;
+      color: #880e4f;
+    }
+
+    #secondPage img {
+      width: 200px;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
+    }
+
+    #secondPage p {
+      font-size: 0.6rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      white-space: pre-line;
+      line-height: 1.4;
+    }
+
+    iframe {
+      border-radius: 12px;
+      margin-top: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @media (max-width: 400px) {
+      .container {
+        padding: 30px 20px;
+      }
+      h1 {
+        font-size: 1.3rem;
+      }
+      p {
+        font-size: 0.65rem;
+      }
+      button {
+        padding: 12px 22px;
+        font-size: 0.65rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="mainPage">
+    <h1>HBD! 🎂</h1>
+    <p>Sorry telat, tapi doanya tetap tulus ya! 😁</p>
+    <button onclick="goToSecondPage()">Play Music</button>
+    <canvas id="confettiCanvas"></canvas>
+  </div>
+
+  <div id="secondPage">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnwJIGR_B6wIiYt_raUGK0DRsUvUn3CRx4eThPIp21Rg&s" alt="Foto Ulang Tahun" />
+    <p>
+Hey, selamat ulang tahun ya! 🎉 Udah lumayan lama kita kenal, semoga tahun ini makin banyak cerita seru buat anda. Semoga semua harapan anda tercapai dan makin happy terus. Jangan lupa traktir saya makan-makan ya 😁
+    </p>
+    <iframe src="https://open.spotify.com/embed/track/6VgyRGeR4cw6yNGazjGFhu?utm_source=generator&theme=0" 
+      width="300" height="80" frameborder="0" allowfullscreen 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+    </iframe>
+  </div>
+
+  <script>
+    function goToSecondPage() {
+      document.getElementById("mainPage").style.display = "none";
+      document.getElementById("secondPage").style.display = "block";
+    }
+
+    // confetti
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    let pieces = [];
+    const colors = ['#f8bbd0', '#fce4ec', '#f48fb1', '#ec407a', '#ad1457'];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < 100; i++) {
+      pieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 6 + 4,
+        d: Math.random() * 50 + 10,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        tilt: Math.random() * 10 - 10,
+        tiltAngleIncremental: Math.random() * 0.07 + .05,
+        tiltAngle: 0
+      });
+    }
+
+    function drawConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach((p, i) => {
+        ctx.beginPath();
+        ctx.lineWidth = p.r / 2;
+        ctx.strokeStyle = p.color;
+        ctx.moveTo(p.x + p.tilt + p.r / 3, p.y);
+        ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 5);
+        ctx.stroke();
+      });
+      updateConfetti();
+    }
+
+    function updateConfetti() {
+      pieces.forEach((p, i) => {
+        p.tiltAngle += p.tiltAngleIncremental;
+        p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
+        p.tilt = Math.sin(p.tiltAngle - i / 3) * 15;
+        if (p.y > canvas.height) {
+          p.y = -10;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+    }
+
+    (function animate() {
+      drawConfetti();
+      requestAnimationFrame(animate);
+    })();
+  </script>
+
+</body>
+</html>
